@@ -15,27 +15,30 @@ public class WelcomeActivity extends AppCompatActivity {
         moveToLoginActivity();
     }
 
-    protected void onResume() {
-        super.onResume();
-        String tutorialKey = "SOME_KEY";
-        Boolean firstTime = getPreferences(MODE_PRIVATE).getBoolean(tutorialKey, true);
-        if (firstTime) {
-            Toast.makeText(WelcomeActivity.this, "First Run", Toast.LENGTH_LONG).show(); // here you do what you want to do - an activity tutorial in my case
-            getPreferences(MODE_PRIVATE).edit().putBoolean(tutorialKey, false).apply();
-        }
-    }
-
     public void moveToLoginActivity(){
         Handler mHandler = new Handler();
         mHandler.postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                Intent startActivity = new Intent(WelcomeActivity.this, LogIn_Activity.class);
-                startActivity(startActivity);
-                finish();
+                String tutorialKey = "SOME_KEY";
+                Boolean firstTime = getPreferences(MODE_PRIVATE).getBoolean(tutorialKey, true);
+                if (firstTime) {
+                    getPreferences(MODE_PRIVATE).edit().putBoolean(tutorialKey, false).apply();
+                    Intent startActivity = new Intent(WelcomeActivity.this, FirstTimeActivity.class);
+                    startActivity(startActivity);
+                    finish();
+                }
+                else{
+                    Intent startActivity = new Intent(WelcomeActivity.this, LogIn_Activity.class);
+                    startActivity(startActivity);
+                    finish();
+                }
+
             }
 
         }, 5000L);
     }
+
+
 }
