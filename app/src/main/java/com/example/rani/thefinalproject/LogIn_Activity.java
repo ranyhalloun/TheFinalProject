@@ -1,7 +1,5 @@
 package com.example.rani.thefinalproject;
 
-import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class LogIn_Activity extends AppCompatActivity {
 
     public static final int RC_SIGN_IN = 1;
 
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //user is signed in
-                    Toast.makeText(MainActivity.this, "Signed in", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogIn_Activity.this, "Signed in", Toast.LENGTH_SHORT).show();
                 } else {
                     //user is signed out
                     startActivityForResult(
