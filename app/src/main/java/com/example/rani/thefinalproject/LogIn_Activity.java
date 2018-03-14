@@ -8,9 +8,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.firebase.ui.auth.data.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,32 +32,53 @@ public class LogIn_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
-//        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    //user is signed in
-//                    Toast.makeText(LogIn_Activity.this, "Signed in", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    //user is signed out
-//                    startActivityForResult(
-//                            AuthUI.getInstance()
-//                                    .createSignInIntentBuilder()
-//                                    .setIsSmartLockEnabled(false)
-//                                    .setAvailableProviders(Arrays.asList(
-//                                            new AuthUI.IdpConfig.EmailBuilder().build(),
-//                                            new AuthUI.IdpConfig.GoogleBuilder().build()))
-//                                    .build(),
-//                            RC_SIGN_IN);
-//                }
-//            }
-//        };
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    //user is signed in
+                    Toast.makeText(LogIn_Activity.this, "Signed in", Toast.LENGTH_SHORT).show();
+                } else {
+                    //user is signed out
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(false)
+                                    .setAvailableProviders(Arrays.asList(
+                                            new AuthUI.IdpConfig.EmailBuilder().build(),
+                                            new AuthUI.IdpConfig.GoogleBuilder().build()))
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser(); //Getting current user
+        String currentUserUid = currentFirebaseUser.getUid();
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference usersRef = database.getReference("https://thefinalproject-10623.firebaseio.com/users");
+
+        FirebaseDatabase.DefaultInstance.GetReference("Leaders").GetValueAsync().ContinueWith(task => {
+        if (task.IsFaulted) {
+            // Handle the error...
+        }
+        else if (task.IsCompleted) {
+            DataSnapshot snapshot = task.Result;
+            // Do something with snapshot...
+        }
+      });
+
+
+
+
+
+
+
+
+
+
 
         Button btn1 = (Button) findViewById(R.id.SignOut);
         btn1.setOnClickListener(new View.OnClickListener() {
