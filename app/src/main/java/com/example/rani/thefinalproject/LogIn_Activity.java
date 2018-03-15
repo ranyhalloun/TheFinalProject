@@ -56,11 +56,12 @@ public class LogIn_Activity extends AppCompatActivity {
 
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser(); //Getting current user
         String currentUserUid = currentFirebaseUser.getUid();
+        User currentUser;
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = database.getReference("https://thefinalproject-10623.firebaseio.com/users");
 
-        FirebaseDatabase.DefaultInstance.GetReference("Leaders").GetValueAsync().ContinueWith(task => {
+        int FirebaseDatabase.DefaultInstance.GetReference("Leaders").GetValueAsync().ContinueWith(task => {
         if (task.IsFaulted) {
             // Handle the error...
         }
