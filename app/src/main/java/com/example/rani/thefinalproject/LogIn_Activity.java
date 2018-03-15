@@ -1,8 +1,8 @@
 package com.example.rani.thefinalproject;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -60,6 +60,7 @@ public class LogIn_Activity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = database.getReference("https://thefinalproject-10623.firebaseio.com/users");
+        User currentUser = new User (currentUserUid);
 
         int FirebaseDatabase.DefaultInstance.GetReference("Leaders").GetValueAsync().ContinueWith(task => {
         if (task.IsFaulted) {

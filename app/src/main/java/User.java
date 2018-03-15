@@ -11,9 +11,9 @@ public class User {
 
 
 
-//    public void User(String UID){
-//        this.UID = UID;
-//    }
+    public void User(String UID){
+        this.UID = UID;
+    }
 
     public void setUID(String UID) {
         this.UID = UID;
