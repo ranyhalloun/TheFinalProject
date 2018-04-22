@@ -7,10 +7,10 @@
     tools:context="com.example.rani.thefinalproject.MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome 7bob!"
+        android:text="@string/maintext1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,8 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
         android:layout_marginStart="8dp"
-        android:text="SignOut!"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView" />
+        android:text="@string/mainbutton1"
+        app:layout_constraintBottom_toTopOf="@+id/text1"
+        app:layout_constraintStart_toStartOf="@+id/text1"
+        android:layout_marginLeft="8dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -7,10 +7,33 @@
     tools:context="com.example.rani.thefinalproject.LoginActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text1"
+        android:layout_width="57dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/logintext1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GoogleSignInButton"
+        app:layout_constraintVertical_bias="0.457"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/GoogleSignInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="188dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="124dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
