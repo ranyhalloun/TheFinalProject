@@ -1,10 +1,18 @@
-    <resources>
+<resources>
     <string name="app_name">TheFinalProject</string>
 
-        <string name="main">MainActivity</string>
-            <string name="maintext1">Welcome To The App</string>
-            <string name="mainbutton1">Sign Out</string>
+    <string name="main">MainActivity</string>
+    <string name="maintext1">Welcome To The App</string>
+    <string name="signOut">Sign Out</string>
+    <string name="moveToSignInActivity">To Sign In</string>
 
-        <string name="login">LoginActivity</string>
-            <string name="logintext1">Hello!!!!</string>
+    <string name="login">LoginActivity</string>
+    <string name="logintext1">Hello!!!!</string>
+
+    <string name="signin">SignInActivity</string>
+    <string name="GoogleSignInButton">Google Sign In</string>
+    <string name="EmailSignInBtn">Email</string>
+    <string name="signInText">Choose Sign In Method</string>
+
+
 </resources>

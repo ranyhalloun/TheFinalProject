@@ -16,19 +16,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
-
-    public static final int RC_SIGN_IN = 1;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("main", "MainActivity: in onCreate \n");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
+        //buttons
+        findViewById(R.id.moveToSignInActivity).setOnClickListener(this);
     }
 
     @Override
@@ -41,5 +41,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         Log.d("main", "MainActivity: in onResume \n");
         super.onResume();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.moveToSignInActivity:
+                moveToSignInActivity();
+                break;
+        }
+    }
+
+    private void moveToSignInActivity(){
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
     }
 }
